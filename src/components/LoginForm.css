@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General layout */
+.login-section {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Sidebar image */
+.sidebar {
+  display: block;
+  width: 50%;
+  background-color: #064e3b; /* emerald-950 */
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.sidebar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive: stack on small screens similar to Form */
+@media (max-width: 900px) {
+  .login-section {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+  .sidebar {
+    width: 100%;
+    height: 250px;
+    padding: 1rem;
+  }
+  .sidebar-img {
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+/* Form container */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* ✅ vertical center */
+  align-items: center;      /* ✅ horizontal center */
+  width: 100%;
+  min-width: 280px;
+  height: 100%;  /* make it fill the section height */
+}
+
+@media (min-width: 1024px) {
+  .form-container {
+    width: 50%;
+  }
+}
+
+/* Header */
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem; /* add spacing from form */
+}
+
+.form-header h2 {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: bold;
+}
+
+.form-header p {
+  color: #a1a1aa; /* zinc-400 */
+}
+
+/* Form styles */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  width: 80%;         /* ✅ keep form narrower and centered */
+  max-width: 400px;
+}
+
+.login-form label {
+  color: #a1a1aa; /* zinc-400 */
+  font-weight: 500;
+}
+
+.login-form input {
+  color: #71717a; /* zinc-500 */
+  border: none;
+  border-bottom: 2px solid #d4d4d8; /* zinc-300 */
+  padding: 0.25rem 0;
+  margin-top: 0.75rem;
+  outline: none;
+  transition: color 0.2s ease;
+}
+
+.login-form input::placeholder { color: #CDCDCD; }
+
+.login-form input:focus {
+  color: black;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Button */
+.login-form button {
+  background-color: #d4d4d8; /* zinc-300 */
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  width: auto;
+  padding: 14px;
+  margin: 2rem auto 0 auto;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
+.login-form button:enabled {
+  background-color: #4CAF4F;
+}
+
+.login-form .secondary {
+  background-color: transparent;
+  color: #103E13;
+  border: 2px solid #103E13;
+  margin-top: 12px;
+}
+
+.back-link {
+  margin-top: 1rem;
+  text-align: center;
+  color: #a1a1aa;
+}
+
+.back-link a {
+  color: #0d6efd;
+  text-decoration: none;
+}

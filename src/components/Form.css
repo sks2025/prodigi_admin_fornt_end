@@ -1,0 +1,149 @@
+/* Container */
+.container {
+  display: flex;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Left Side - just an image */
+.promo {
+  flex: 1;
+  background: #0b3d0b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.promo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* makes sure it fills nicely */
+}
+
+/* Right Side - Login */
+.login {
+  flex: 1;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+
+.login h2 {
+  margin-bottom: 25px;
+  font-weight: bold;
+  font-size: 1.6rem;
+  color: #000;
+}
+
+form {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin: 15px 0 5px;
+  font-size: 15px;
+  /* font-weight: bold; */
+  font-family: sans-serif;
+  color: #757575;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 32px; /* space for eye icon */
+}
+
+.input:focus {
+  border-bottom: 1px solid #000;
+}
+
+.input::placeholder {
+  color: #CDCDCD;
+}
+
+.input.error {
+  border-bottom-color: #dc2626;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.input-group {
+  position: relative;
+}
+
+.toggle-visibility {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 4px;
+  color: #4b5563;
+}
+
+.forgot {
+  margin: 10px 0 20px;
+  font-size: 15px;
+  color: #0d6efd;
+  text-decoration: none;
+  align-self: flex-start;
+  /* font-family: cursive; */
+}
+
+.submit {
+  padding: 12px;
+  background: #ccc;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: not-allowed;
+  width: 25%;
+  align-self: flex-end;
+}
+
+.submit:enabled {
+  background: #4CAF4F;
+  cursor: pointer;
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .promo {
+    width: 100%;
+    height: 250px;
+  }
+
+  .promo img {
+    object-fit: contain;
+  }
+
+  .login {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+}
