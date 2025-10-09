@@ -32,32 +32,45 @@ const Form = () => {
 
   const login = async () => {
     try {
-      const myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-
-      const raw = JSON.stringify({
+      console.log('Starting login process...');
+      setErrorMsg(""); // Clear any previous errors
+      
+      const requestBody = {
         email: loginId,
         password: password
-      });
-      console.log('Sending login credentials:', raw);
-
-      const requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow"
       };
+      
+    
+      const response = await fetch("http://localhost:3001/api/admin/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody)
+      });
 
-      const response = await fetch("http://localhost:5000/api/login", requestOptions);
       const result = await response.json();
-      if (response.ok) {
+      console.log('Response data:', result);
+
+      if (response.ok && result.success) {
+        // Store token in localStorage
+        if (result.data && result.data.token) {
+          localStorage.setItem('adminToken', result.data.token);
+          localStorage.setItem('adminData', JSON.stringify(result.data.admin));
+          console.log('Token stored successfully');
+        }
+        
         setErrorMsg("");
+        console.log('Login successful, navigating to dashboard...');
         navigate('/dashboard');
       } else {
-        setErrorMsg(result.message || "Login failed");
+        const errorMessage = result.message || "Login failed";
+        console.error('Login failed:', errorMessage);
+        setErrorMsg(errorMessage);
       }
     } catch (error) {
-      setErrorMsg("Login failed. Please try again.");
+      console.error('Login error:', error);
+      setErrorMsg("Network error. Please check if the server is running and try again.");
     }
   }
 

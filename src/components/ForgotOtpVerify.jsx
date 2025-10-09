@@ -27,12 +27,13 @@ const ForgotOtpVerify = () => {
     try {
       const code = otp.join('')
       if (code.length !== 4) return
+      
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
       const raw = JSON.stringify({
-        email: storedEmail,
-        otp: code
+        "email": storedEmail,
+        "otp": code
       });
 
       const requestOptions = {
@@ -42,15 +43,12 @@ const ForgotOtpVerify = () => {
         redirect: "follow"
       };
 
-      fetch("http://localhost:5000/api/forgot-password/verify", requestOptions)
-        .then(async (response) => {
-          const data = await response.json().catch(() => ({}))
-          if (response.ok) {
-            try { localStorage.setItem('forgotOtp', code) } catch(e) {}
-            navigate('/create-password')
-          } else {
-            alert(data.message || 'Invalid OTP')
-          }
+      fetch("http://localhost:3001/api/admin/verify-otp", requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+          console.log(result)
+          try { localStorage.setItem('forgotOtp', code) } catch(e) {}
+          navigate('/create-password')
         })
         .catch((error) => console.error(error));
     } catch (error) {

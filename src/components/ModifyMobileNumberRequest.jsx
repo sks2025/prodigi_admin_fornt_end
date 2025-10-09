@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import './customerTheme.css';
 import './modifyMobileNumberRequest.css';
 
-const ModifyMobileNumberRequest = () => {
+const ModifyMobileNumberRequest = ({ onNavigate }) => {
   const [oldMobile, setOldMobile] = useState('');
   const [newMobile, setNewMobile] = useState('');
   const [comment, setComment] = useState('');
 
   const handleConfirm = (e) => {
     e.preventDefault();
-    // Placeholder submission, integrate API later
-    alert('Request Generated');
+    // Navigate to RequestGenerated page
+    if (onNavigate) {
+      onNavigate('request-generated');
+    }
   };
 
   return (

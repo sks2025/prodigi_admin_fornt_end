@@ -45,13 +45,15 @@ const CreateNewPassword = () => {
         alert('Missing email or OTP. Please restart the reset flow.')
         return
       }
+      
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
       const raw = JSON.stringify({
-        email,
-        otp,
-        newPassword: password
+        "email": email,
+        "otp": otp,
+        "password": password,
+        "confirmPassword": confirm
       });
 
       const requestOptions = {
@@ -61,15 +63,12 @@ const CreateNewPassword = () => {
         redirect: "follow"
       };
 
-      fetch("http://localhost:5000/api/forgot-password/reset", requestOptions)
-        .then(async (response) => {
-          const data = await response.json().catch(() => ({}))
-          if (response.ok) {
-            try { localStorage.removeItem('forgotEmail'); localStorage.removeItem('forgotOtp'); } catch(e) {}
-            navigate('/login')
-          } else {
-            alert(data.message || 'Failed to update password')
-          }
+      fetch("http://localhost:3001/api/admin/reset-password", requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+          console.log(result)
+          try { localStorage.removeItem('forgotEmail'); localStorage.removeItem('forgotOtp'); } catch(e) {}
+          navigate('/login')
         })
         .catch((error) => console.error(error));
     } catch (error) {

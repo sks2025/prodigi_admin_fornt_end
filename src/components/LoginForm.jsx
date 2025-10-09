@@ -36,7 +36,7 @@ const LoginForm = () => {
                 redirect: "follow"
             };
 
-            fetch("http://localhost:5000/api/forgot-password/request", requestOptions)
+            fetch("http://localhost:3001/api/admin/forgot-password", requestOptions)
                 .then(async (response) => {
                     const data = await response.json().catch(() => ({}))
                     if (response.ok) {

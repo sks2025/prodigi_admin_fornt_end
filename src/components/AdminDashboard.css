@@ -5,6 +5,7 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     line-height: 1.5;
     color: #1a202c;
+    gap: 20px;
 }
 
 /* Sidebar */
@@ -13,8 +14,8 @@
     top: 0;
     left: 0;
     display: none;
-    width: 80%;
-    max-width: 320px;
+    width: 85%;
+    max-width: 380px;
     height: 100vh;
     background: #eafaf1;
     box-shadow: none;
@@ -22,6 +23,7 @@
     transition: transform .3s ease;
     z-index: 30;
     border-right: 1.5px solid #d1e7dd;
+    padding: 0 20px;
 }
 
 .sidebar.open {
@@ -33,14 +35,14 @@
         position: sticky;
         transform: none;
         display: block;
-        width: 20%;
+        width: 25%;
         box-shadow: none;
     }
 }
 
 @media (min-width: 1280px) {
     .sidebar {
-        width: 18%;
+        width: 22%;
     }
 }
 
@@ -175,17 +177,20 @@
 .main {
     width: 100%;
     overflow-y: auto;
+    margin-left: 0;
 }
 
 @media (min-width: 1024px) {
     .main {
-        width: 80%;
+        width: 75%;
+        margin-left: 20px;
     }
 }
 
 @media (min-width: 1280px) {
     .main {
-        width: 82%;
+        width: 78%;
+        margin-left: 20px;
     }
 }
 
